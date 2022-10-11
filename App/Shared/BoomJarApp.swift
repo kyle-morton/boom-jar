@@ -11,7 +11,7 @@ import SwiftUI
 struct BoomJarApp: App {
     var body: some Scene {
         WindowGroup {
-            UserPodcastsView()
+            HomeView()
         }
     }
 }

@@ -1,33 +1,39 @@
 //
-//  UserPodcastsView.swift
+//  HomeView.swift
 //  BoomJar (iOS)
 //
-//  Created by Kyle Morton on 10/9/22.
+//  Created by Kyle Morton on 10/10/22.
 //
 
 import SwiftUI
 
-struct UserPodcastsView: View {
+struct HomeView: View {
     
     @EnvironmentObject private var podcastStore: PodcastStore
     @State var searchTerm = ""
+    @State var showSettingsView = false
+    @State var showDownloadsView = false
+    @State var showAddView = false
+    
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(searchResults) { podcast in
-                    PodcastRowView(podcast: podcast)
+                    NavigationLink(destination: PodcastDetailsView(podcast: podcast)) {
+                        PodcastRowView(podcast: podcast)
+                    }
                 }
             }
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button {
-                        print("Settings")
+                        showSettingsView = true
                     } label: {
                         Image(systemName: "asterisk.circle")
                     }
                     Button {
-                        print("Edit button was tapped")
+                        showDownloadsView = true
                     } label: {
                         Image(systemName: "square.and.arrow.down")
                     }
@@ -39,13 +45,28 @@ struct UserPodcastsView: View {
                         Image(systemName: "text.badge.plus")
                     }
                     Button {
-                        print("Edit button was tapped")
+                        showAddView = true
                     } label: {
                         Image(systemName: "plus")
                     }
                 }
             }
             .searchable(text: $searchTerm)
+            .background{
+                NavigationLink(destination: SettingsView(), isActive: $showSettingsView) {
+                  EmptyView()
+                }
+            }
+            .background {
+                NavigationLink(destination: DownloadsView(), isActive: $showDownloadsView) {
+                  EmptyView()
+                }
+            }
+            .background {
+                NavigationLink(destination: AddPodcastView(), isActive: $showAddView) {
+                  EmptyView()
+                }
+            }
         }
     }
     
@@ -57,11 +78,13 @@ struct UserPodcastsView: View {
                 || $0.network.contains(searchTerm)}
         }
     }
+    
 }
 
-struct UserPodcastsView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        UserPodcastsView()
+        HomeView()
+            .preferredColorScheme(.dark)
             .environmentObject(PodcastStore.example)
     }
 }
