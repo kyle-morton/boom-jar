@@ -42,9 +42,9 @@ class PodcastStore: ObservableObject {
         podcasts: examplePodcasts,
         userPodcasts: [
             UserPodcast(id: 1, userId: 123, podcast: examplePodcasts[0]),
-            UserPodcast(id: 1, userId: 123, podcast: examplePodcasts[2]),
-            UserPodcast(id: 1, userId: 123, podcast: examplePodcasts[7]),
-            UserPodcast(id: 1, userId: 123, podcast: examplePodcasts[8])
+            UserPodcast(id: 2, userId: 123, podcast: examplePodcasts[2]),
+            UserPodcast(id: 3, userId: 123, podcast: examplePodcasts[7]),
+            UserPodcast(id: 4, userId: 123, podcast: examplePodcasts[8])
         ]
     )
     

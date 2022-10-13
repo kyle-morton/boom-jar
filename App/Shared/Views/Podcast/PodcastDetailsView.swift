@@ -12,12 +12,15 @@ struct PodcastDetailsView: View {
     var podcast: Podcast = Podcast()
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(podcast.name)
+            Text(podcast.network)
+        }
     }
 }
 
 struct PodcastDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        PodcastDetailsView()
+        PodcastDetailsView(podcast: PodcastStore.example.podcasts[0])
     }
 }

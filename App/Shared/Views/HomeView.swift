@@ -19,9 +19,9 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(searchResults) { podcast in
-                    PodcastRowView(podcast: podcast)
-                        .background( NavigationLink("", destination: PodcastDetailsView(podcast: podcast)).opacity(0)
+                ForEach(searchResults) { userPodcast in
+                    PodcastRowView(podcast: userPodcast.podcast)
+                        .background( NavigationLink("", destination: PodcastDetailsView(podcast: userPodcast.podcast)).opacity(0)
                         )
                 }
             }
@@ -70,12 +70,12 @@ struct HomeView: View {
         }
     }
     
-    var searchResults: [Podcast] {
+    var searchResults: [UserPodcast] {
         if searchTerm.isEmpty {
-            return podcastStore.podcasts
+            return podcastStore.userPodcasts
         } else {
-            return podcastStore.podcasts.filter { $0.name.contains(searchTerm)
-                || $0.network.contains(searchTerm)}
+            return podcastStore.userPodcasts.filter { $0.podcast.name.contains(searchTerm)
+                || $0.podcast.network.contains(searchTerm)}
         }
     }
     
