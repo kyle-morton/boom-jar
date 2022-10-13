@@ -20,9 +20,9 @@ struct HomeView: View {
         NavigationView {
             List {
                 ForEach(searchResults) { podcast in
-                    NavigationLink(destination: PodcastDetailsView(podcast: podcast)) {
-                        PodcastRowView(podcast: podcast)
-                    }
+                    PodcastRowView(podcast: podcast)
+                        .background( NavigationLink("", destination: PodcastDetailsView(podcast: podcast)).opacity(0)
+                        )
                 }
             }
             .toolbar {

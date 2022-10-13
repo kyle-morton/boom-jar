@@ -24,6 +24,7 @@
 		886536AC28F507600007A88A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536AB28F507600007A88A /* SettingsView.swift */; };
 		886536AE28F507F20007A88A /* DownloadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536AD28F507F20007A88A /* DownloadsView.swift */; };
 		886536B028F508360007A88A /* AddPodcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536AF28F508360007A88A /* AddPodcastView.swift */; };
+		886536B228F7A85E0007A88A /* UserPodcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536B128F7A85E0007A88A /* UserPodcast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		886536AB28F507600007A88A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		886536AD28F507F20007A88A /* DownloadsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsView.swift; sourceTree = "<group>"; };
 		886536AF28F508360007A88A /* AddPodcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPodcastView.swift; sourceTree = "<group>"; };
+		886536B128F7A85E0007A88A /* UserPodcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPodcast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			children = (
 				8865369A28F3B99F0007A88A /* Podcast.swift */,
 				8865369C28F3BAA70007A88A /* PodcastEpisode.swift */,
+				886536B128F7A85E0007A88A /* UserPodcast.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				8865369D28F3BAA70007A88A /* PodcastEpisode.swift in Sources */,
 				886536A928F505020007A88A /* HomeView.swift in Sources */,
 				884D375528F36696005E6E83 /* BoomJarApp.swift in Sources */,
+				886536B228F7A85E0007A88A /* UserPodcast.swift in Sources */,
 				886536AE28F507F20007A88A /* DownloadsView.swift in Sources */,
 				886536A528F3C1DE0007A88A /* PodcastDetailsView.swift in Sources */,
 				886536B028F508360007A88A /* AddPodcastView.swift in Sources */,

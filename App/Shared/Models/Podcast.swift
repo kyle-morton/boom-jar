@@ -7,17 +7,20 @@
 
 import Foundation
 
-struct Podcast : Identifiable {
+struct Podcast : Identifiable, Codable {
     var id: Int
     var name: String
     var network: String
     var logoUrl: String
+    var subscribed: Bool
     
-    init(id: Int, name: String, network: String, logoUrl: String) {
+    
+    init(id: Int, name: String, network: String, logoUrl: String, subscribed: Bool = false) {
         self.id = id
         self.name = name
         self.network = network
         self.logoUrl = logoUrl
+        self.subscribed = subscribed
     }
     
     init() {
@@ -25,6 +28,7 @@ struct Podcast : Identifiable {
         self.name = ""
         self.network = ""
         self.logoUrl = ""
+        self.subscribed = false
     }
     
     

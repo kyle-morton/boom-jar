@@ -23,6 +23,10 @@ struct PodcastRowView: View {
                     .font(.subheadline)
             }
             Spacer()
+            Image(systemName: "circle.fill")
+                .foregroundColor(.blue)
+                .font(.footnote)
+                .padding()
         }
 //        .padding()
         
