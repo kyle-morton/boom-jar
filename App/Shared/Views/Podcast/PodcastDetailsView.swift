@@ -14,6 +14,7 @@ struct PodcastDetailsView: View {
     var body: some View {
         VStack {
             Text(podcast.name)
+
             Text(podcast.network)
         }
     }

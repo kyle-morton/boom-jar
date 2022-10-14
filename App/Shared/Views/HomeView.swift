@@ -13,18 +13,19 @@ struct HomeView: View {
     @State var searchTerm = ""
     @State var showSettingsView = false
     @State var showDownloadsView = false
-    @State var showAddView = false
+    @State var showSearchView = false
     
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(searchResults) { userPodcast in
-                    PodcastRowView(podcast: userPodcast.podcast)
+                    PodcastRow(podcast: userPodcast.podcast)
                         .background( NavigationLink("", destination: PodcastDetailsView(podcast: userPodcast.podcast)).opacity(0)
                         )
                 }
             }
+            .listStyle(.grouped)
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button {
@@ -45,7 +46,7 @@ struct HomeView: View {
                         Image(systemName: "text.badge.plus")
                     }
                     Button {
-                        showAddView = true
+                        showSearchView = true
                     } label: {
                         Image(systemName: "plus")
                     }
@@ -63,7 +64,7 @@ struct HomeView: View {
                 }
             }
             .background {
-                NavigationLink(destination: AddPodcastView(), isActive: $showAddView) {
+                NavigationLink(destination: AddView(), isActive: $showSearchView) {
                   EmptyView()
                 }
             }

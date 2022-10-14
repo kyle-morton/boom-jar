@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PodcastRowView: View {
+struct PodcastRow: View {
     
     var podcast: Podcast = Podcast()
     
@@ -35,6 +35,6 @@ struct PodcastRowView: View {
 
 struct PodcastRowView_Previews: PreviewProvider {
     static var previews: some View {
-        PodcastRowView(podcast: PodcastStore.example.podcasts[0])
+        PodcastRow(podcast: PodcastStore.example.podcasts[0])
     }
 }

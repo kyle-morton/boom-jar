@@ -15,7 +15,7 @@
 		884D375628F36696005E6E83 /* BoomJarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884D372D28F36694005E6E83 /* BoomJarApp.swift */; };
 		884D375928F36696005E6E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 884D372F28F36696005E6E83 /* Assets.xcassets */; };
 		884D375A28F36696005E6E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 884D372F28F36696005E6E83 /* Assets.xcassets */; };
-		8865369828F36D7C0007A88A /* PodcastRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865369728F36D7C0007A88A /* PodcastRowView.swift */; };
+		8865369828F36D7C0007A88A /* PodcastRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865369728F36D7C0007A88A /* PodcastRow.swift */; };
 		8865369B28F3B99F0007A88A /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865369A28F3B99F0007A88A /* Podcast.swift */; };
 		8865369D28F3BAA70007A88A /* PodcastEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865369C28F3BAA70007A88A /* PodcastEpisode.swift */; };
 		886536A028F3BCC40007A88A /* PodcastStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865369F28F3BCC40007A88A /* PodcastStore.swift */; };
@@ -23,8 +23,9 @@
 		886536A928F505020007A88A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536A828F505020007A88A /* HomeView.swift */; };
 		886536AC28F507600007A88A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536AB28F507600007A88A /* SettingsView.swift */; };
 		886536AE28F507F20007A88A /* DownloadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536AD28F507F20007A88A /* DownloadsView.swift */; };
-		886536B028F508360007A88A /* AddPodcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536AF28F508360007A88A /* AddPodcastView.swift */; };
 		886536B228F7A85E0007A88A /* UserPodcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536B128F7A85E0007A88A /* UserPodcast.swift */; };
+		886536B428F8F5630007A88A /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536B328F8F5630007A88A /* AddView.swift */; };
+		886536B628F8FE770007A88A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536B528F8FE770007A88A /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +57,7 @@
 		884D374D28F36696005E6E83 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		884D375128F36696005E6E83 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		884D375328F36696005E6E83 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
-		8865369728F36D7C0007A88A /* PodcastRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastRowView.swift; sourceTree = "<group>"; };
+		8865369728F36D7C0007A88A /* PodcastRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastRow.swift; sourceTree = "<group>"; };
 		8865369A28F3B99F0007A88A /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		8865369C28F3BAA70007A88A /* PodcastEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastEpisode.swift; sourceTree = "<group>"; };
 		8865369F28F3BCC40007A88A /* PodcastStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastStore.swift; sourceTree = "<group>"; };
@@ -64,8 +65,9 @@
 		886536A828F505020007A88A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		886536AB28F507600007A88A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		886536AD28F507F20007A88A /* DownloadsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsView.swift; sourceTree = "<group>"; };
-		886536AF28F508360007A88A /* AddPodcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPodcastView.swift; sourceTree = "<group>"; };
 		886536B128F7A85E0007A88A /* UserPodcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPodcast.swift; sourceTree = "<group>"; };
+		886536B328F8F5630007A88A /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		886536B528F8FE770007A88A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		884D372C28F36694005E6E83 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				886536B728F8FEE60007A88A /* Components */,
 				8865369E28F3BCB80007A88A /* Store */,
 				8865369928F3B9900007A88A /* Models */,
 				8865369428F367DE0007A88A /* Views */,
@@ -167,6 +170,7 @@
 				886536A828F505020007A88A /* HomeView.swift */,
 				886536AB28F507600007A88A /* SettingsView.swift */,
 				886536AD28F507F20007A88A /* DownloadsView.swift */,
+				886536B328F8F5630007A88A /* AddView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,11 +196,18 @@
 		886536AA28F505420007A88A /* Podcast */ = {
 			isa = PBXGroup;
 			children = (
-				8865369728F36D7C0007A88A /* PodcastRowView.swift */,
 				886536A428F3C1DE0007A88A /* PodcastDetailsView.swift */,
-				886536AF28F508360007A88A /* AddPodcastView.swift */,
 			);
 			path = Podcast;
+			sourceTree = "<group>";
+		};
+		886536B728F8FEE60007A88A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8865369728F36D7C0007A88A /* PodcastRow.swift */,
+				886536B528F8FE770007A88A /* SearchBar.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,15 +370,16 @@
 			files = (
 				886536A028F3BCC40007A88A /* PodcastStore.swift in Sources */,
 				886536AC28F507600007A88A /* SettingsView.swift in Sources */,
-				8865369828F36D7C0007A88A /* PodcastRowView.swift in Sources */,
+				8865369828F36D7C0007A88A /* PodcastRow.swift in Sources */,
 				8865369B28F3B99F0007A88A /* Podcast.swift in Sources */,
 				8865369D28F3BAA70007A88A /* PodcastEpisode.swift in Sources */,
+				886536B628F8FE770007A88A /* SearchBar.swift in Sources */,
 				886536A928F505020007A88A /* HomeView.swift in Sources */,
 				884D375528F36696005E6E83 /* BoomJarApp.swift in Sources */,
 				886536B228F7A85E0007A88A /* UserPodcast.swift in Sources */,
 				886536AE28F507F20007A88A /* DownloadsView.swift in Sources */,
 				886536A528F3C1DE0007A88A /* PodcastDetailsView.swift in Sources */,
-				886536B028F508360007A88A /* AddPodcastView.swift in Sources */,
+				886536B428F8F5630007A88A /* AddView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
