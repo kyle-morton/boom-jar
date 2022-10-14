@@ -16,14 +16,20 @@ struct AddView: View {
     var body: some View {
         VStack(alignment: .leading) {
             SearchBar(searchTerm: $searchTerm)
-            List {
-                ForEach(searchResults) { podcast in
-                    PodcastRow(podcast: podcast)
-                        .background( NavigationLink("", destination: PodcastDetailsView(podcast: podcast)).opacity(0)
-                        )
+            if searchResults.count > 0 {
+                List {
+                    ForEach(searchResults) { podcast in
+                        PodcastRow(podcast: podcast)
+                            .background( NavigationLink("", destination: PodcastDetailsView(podcast: podcast)).opacity(0)
+                            )
+                    }
                 }
+                .listStyle(.grouped)
             }
-            .listStyle(.grouped)
+            else {
+                Text("Use the search above...")
+                Spacer()
+            }
         }
         .navigationTitle("Add Podcast")
         .navigationBarTitleDisplayMode(.inline)
@@ -31,7 +37,7 @@ struct AddView: View {
     
     var searchResults: [Podcast] {
         if searchTerm.isEmpty {
-            return podcastStore.podcasts
+            return []
         } else {
             return podcastStore.podcasts.filter { $0.name.contains(searchTerm)
                 || $0.network.contains(searchTerm)}
