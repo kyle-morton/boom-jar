@@ -13,8 +13,7 @@ struct PodcastRow: View {
     
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: podcast.logoUrl))
-                .frame(width: 60, height: 60)
+            PodcastLogo(podcast: podcast, isFullSize: false)
             VStack {
                 Text(podcast.name)
                     .font(.headline)
@@ -28,8 +27,6 @@ struct PodcastRow: View {
                 .font(.footnote)
                 .padding()
         }
-//        .padding()
-        
     }
 }
 

@@ -12,14 +12,16 @@ struct Podcast : Identifiable, Codable {
     var name: String
     var network: String
     var logoUrl: String
+    var fullLogoUrl: String
     var subscribed: Bool
     
     
-    init(id: Int, name: String, network: String, logoUrl: String, subscribed: Bool = false) {
+    init(id: Int, name: String, network: String, logoUrl: String, fullLogoUrl: String, subscribed: Bool = false) {
         self.id = id
         self.name = name
         self.network = network
         self.logoUrl = logoUrl
+        self.fullLogoUrl = fullLogoUrl
         self.subscribed = subscribed
     }
     
@@ -28,6 +30,7 @@ struct Podcast : Identifiable, Codable {
         self.name = ""
         self.network = ""
         self.logoUrl = ""
+        self.fullLogoUrl = ""
         self.subscribed = false
     }
     

@@ -19,7 +19,7 @@ class UserPodcastStore: ObservableObject {
     init(podcasts: [UserPodcast]) {
         self.podcasts = podcasts
     }
-    
+        
     private static func fileURL() throws -> URL {
         try FileManager.default.url(for: .documentDirectory,
                                     in: .userDomainMask,

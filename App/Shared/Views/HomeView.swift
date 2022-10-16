@@ -26,7 +26,7 @@ struct HomeView: View {
                 List {
                     ForEach(searchResults) { userPodcast in
                         PodcastRow(podcast: userPodcast.podcast)
-                            .background( NavigationLink("", destination: PodcastDetailsView(podcast: userPodcast.podcast)).opacity(0)
+                            .background( NavigationLink("", destination: UserPodcastDetailsView(userPodcast: userPodcast)).opacity(0)
                             )
                     }
                 }
