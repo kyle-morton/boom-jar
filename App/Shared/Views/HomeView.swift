@@ -8,24 +8,30 @@
 import SwiftUI
 
 struct HomeView: View {
-    
-    @EnvironmentObject private var podcastStore: PodcastStore
+       
+    @Binding var userPodcasts: [UserPodcast]
     @State var searchTerm = ""
     @State var showSettingsView = false
     @State var showDownloadsView = false
     @State var showSearchView = false
     
+    @Environment(\.scenePhase) private var scenePhase;
+    let saveAction: ()->Void;
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(searchResults) { userPodcast in
-                    PodcastRow(podcast: userPodcast.podcast)
-                        .background( NavigationLink("", destination: PodcastDetailsView(podcast: userPodcast.podcast)).opacity(0)
-                        )
+            VStack(alignment: .leading) {
+                SearchBar(searchTerm: $searchTerm)
+                
+                List {
+                    ForEach(searchResults) { userPodcast in
+                        PodcastRow(podcast: userPodcast.podcast)
+                            .background( NavigationLink("", destination: PodcastDetailsView(podcast: userPodcast.podcast)).opacity(0)
+                            )
+                    }
                 }
+                .listStyle(.grouped)
             }
-            .listStyle(.grouped)
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button {
@@ -52,7 +58,6 @@ struct HomeView: View {
                     }
                 }
             }
-            .searchable(text: $searchTerm)
             .background{
                 NavigationLink(destination: SettingsView(), isActive: $showSettingsView) {
                   EmptyView()
@@ -68,14 +73,19 @@ struct HomeView: View {
                   EmptyView()
                 }
             }
+            .onChange(of: scenePhase) { phase in
+                if phase == .inactive {
+                    saveAction();
+                }
+            }
         }
     }
     
     var searchResults: [UserPodcast] {
         if searchTerm.isEmpty {
-            return podcastStore.userPodcasts
+            return userPodcasts
         } else {
-            return podcastStore.userPodcasts.filter { $0.podcast.name.contains(searchTerm)
+            return userPodcasts.filter { $0.podcast.name.contains(searchTerm)
                 || $0.podcast.network.contains(searchTerm)}
         }
     }
@@ -84,8 +94,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(userPodcasts: .constant(UserPodcastStore.example.podcasts), saveAction: {})
             .preferredColorScheme(.dark)
-            .environmentObject(PodcastStore.example)
     }
 }

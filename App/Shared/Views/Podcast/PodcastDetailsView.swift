@@ -23,5 +23,6 @@ struct PodcastDetailsView: View {
 struct PodcastDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         PodcastDetailsView(podcast: PodcastStore.example.podcasts[0])
+            .preferredColorScheme(.dark)
     }
 }

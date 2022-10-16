@@ -16,5 +16,6 @@ struct DownloadsView: View {
 struct DownloadsView_Previews: PreviewProvider {
     static var previews: some View {
         DownloadsView()
+            .preferredColorScheme(.dark)
     }
 }

@@ -14,6 +14,9 @@ struct AddView: View {
     @State var searchTerm = ""
     
     var body: some View {
+        
+        // TODO: build this out, need ability to add podcasts to user Podcast list
+        
         VStack(alignment: .leading) {
             SearchBar(searchTerm: $searchTerm)
             if searchResults.count > 0 {

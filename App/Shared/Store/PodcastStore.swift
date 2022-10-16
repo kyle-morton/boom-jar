@@ -6,20 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 
 class PodcastStore: ObservableObject {
     
+    // TODO: instead of having a published list, use a static list method to pull these (will be via a search anyway)
     @Published var podcasts: [Podcast]
-    @Published var userPodcasts: [UserPodcast]
     
     init() {
         self.podcasts = []
-        self.userPodcasts = []
     }
     
-    init(podcasts: [Podcast], userPodcasts: [UserPodcast]) {
+    init(podcasts: [Podcast]) {
         self.podcasts = podcasts
-        self.userPodcasts = userPodcasts
     }
     
     #if DEBUG
@@ -39,13 +38,7 @@ class PodcastStore: ObservableObject {
     
     
     static var example = PodcastStore(
-        podcasts: examplePodcasts,
-        userPodcasts: [
-            UserPodcast(id: 1, userId: 123, podcast: examplePodcasts[0]),
-            UserPodcast(id: 2, userId: 123, podcast: examplePodcasts[2]),
-            UserPodcast(id: 3, userId: 123, podcast: examplePodcasts[7]),
-            UserPodcast(id: 4, userId: 123, podcast: examplePodcasts[8])
-        ]
+        podcasts: examplePodcasts
     )
     
     #endif

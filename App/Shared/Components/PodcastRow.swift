@@ -36,5 +36,6 @@ struct PodcastRow: View {
 struct PodcastRowView_Previews: PreviewProvider {
     static var previews: some View {
         PodcastRow(podcast: PodcastStore.example.podcasts[0])
+            .preferredColorScheme(.dark)
     }
 }
