@@ -9,10 +9,16 @@ import SwiftUI
 
 struct PodcastDetailsView: View {
     
+    @EnvironmentObject private var userDataStore: UserDataStore
     var podcast: Podcast = Podcast()
     
     func ToggleFollow() {
-        
+        if (isSubscribed()) {
+            userDataStore.unsubscribe(podcastId: podcast.id)
+        }
+        else {
+            _ = userDataStore.subscribe(podcast: podcast)
+        }
     }
     
     var body: some View {
@@ -32,7 +38,7 @@ struct PodcastDetailsView: View {
                 Rectangle()
                     .foregroundColor((Color("LightBlue")))
                 Button(action: ToggleFollow) {
-                    Text("Follow")
+                    Text(isSubscribed() ? "Unfollow" : "Follow")
                         .foregroundColor(.white)
                         .fontWeight(.bold)
                 }
@@ -42,11 +48,16 @@ struct PodcastDetailsView: View {
             Spacer()
         }
     }
+    
+    func isSubscribed() -> Bool {
+        return userDataStore.isSubscribed(podcastId: podcast.id)
+    }
 }
 
 struct PodcastDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         PodcastDetailsView(podcast: PodcastStore.example.podcasts[0])
+            .environmentObject(UserDataStore.example)
             .preferredColorScheme(.dark)
     }
 }

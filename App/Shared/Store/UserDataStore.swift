@@ -29,15 +29,19 @@ class UserDataStore: ObservableObject {
     }
     
     public func subscribe(podcast: Podcast) -> UserPodcast {
-        let newUserPodcast = UserPodcast(id: <#T##Int#>, userId: <#T##Int#>, podcast: podcast)
+
+        let newUserPodcast = UserPodcast(id: podcasts.count, userId: 123, podcast: podcast)
+        podcasts.append(newUserPodcast)
         
-        
-        
+        return newUserPodcast
     }
     
-    public func unsubscribe(podcastId: Int) {
-        
-        return true;
+    public func unsubscribe(podcastId: Int)  {
+        podcasts = podcasts.filter{ $0.podcastId != podcastId }
+    }
+    
+    public func isSubscribed(podcastId: Int) -> Bool {
+        return podcasts.contains{ $0.podcastId == podcastId}
     }
     
     /// wrapper async function for the legacy DispatchQueue version

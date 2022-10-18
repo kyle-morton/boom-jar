@@ -30,7 +30,7 @@
 		886536B628F8FE770007A88A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536B528F8FE770007A88A /* SearchBar.swift */; };
 		886536B928FBA18B0007A88A /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536B828FBA18B0007A88A /* ErrorView.swift */; };
 		886536BB28FBA1990007A88A /* ErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536BA28FBA1990007A88A /* ErrorWrapper.swift */; };
-		886536BD28FBA24D0007A88A /* UserPodcastStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536BC28FBA24D0007A88A /* UserPodcastStore.swift */; };
+		886536BD28FBA24D0007A88A /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886536BC28FBA24D0007A88A /* UserDataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +77,7 @@
 		886536B528F8FE770007A88A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		886536B828FBA18B0007A88A /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		886536BA28FBA1990007A88A /* ErrorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorWrapper.swift; sourceTree = "<group>"; };
-		886536BC28FBA24D0007A88A /* UserPodcastStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPodcastStore.swift; sourceTree = "<group>"; };
+		886536BC28FBA24D0007A88A /* UserDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,7 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				8865369F28F3BCC40007A88A /* PodcastStore.swift */,
-				886536BC28FBA24D0007A88A /* UserPodcastStore.swift */,
+				886536BC28FBA24D0007A88A /* UserDataStore.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -389,7 +389,7 @@
 				88570FD428FC7E950030A8A9 /* PodcastLogo.swift in Sources */,
 				8865369B28F3B99F0007A88A /* Podcast.swift in Sources */,
 				8865369D28F3BAA70007A88A /* PodcastEpisode.swift in Sources */,
-				886536BD28FBA24D0007A88A /* UserPodcastStore.swift in Sources */,
+				886536BD28FBA24D0007A88A /* UserDataStore.swift in Sources */,
 				886536B628F8FE770007A88A /* SearchBar.swift in Sources */,
 				886536A928F505020007A88A /* HomeView.swift in Sources */,
 				884D375528F36696005E6E83 /* BoomJarApp.swift in Sources */,

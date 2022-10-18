@@ -14,7 +14,7 @@ class PodcastStore: ObservableObject {
     @Published var podcasts: [Podcast]
     
     init() {
-        self.podcasts = []
+        self.podcasts = PodcastStore.examplePodcasts
     }
     
     init(podcasts: [Podcast]) {

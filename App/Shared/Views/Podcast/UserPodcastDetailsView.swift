@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct UserPodcastDetailsView: View {
+    
+    @EnvironmentObject private var userPodcastStore: UserDataStore
     var userPodcast: UserPodcast = UserPodcast()
         
     var body: some View {
@@ -30,7 +32,8 @@ struct UserPodcastDetailsView: View {
 
 struct UserPodcastDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        UserPodcastDetailsView(userPodcast: UserPodcastStore.example.podcasts[0])
+        UserPodcastDetailsView(userPodcast: UserDataStore.example.podcasts[0])
+            .environmentObject(UserDataStore.example)
             .preferredColorScheme(.dark)
     }
 }

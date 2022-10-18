@@ -9,7 +9,11 @@ import SwiftUI
 
 struct PodcastRow: View {
     
+    @EnvironmentObject var userPodcastStore: UserDataStore
+    @EnvironmentObject private var podcastStore: PodcastStore
+    
     var podcast: Podcast = Podcast()
+    var hasNewEpisodes: Bool
     
     var body: some View {
         HStack {
@@ -22,17 +26,20 @@ struct PodcastRow: View {
                     .font(.subheadline)
             }
             Spacer()
-            Image(systemName: "circle.fill")
-                .foregroundColor(.blue)
-                .font(.footnote)
-                .padding()
+            
+            if (hasNewEpisodes) {
+                Image(systemName: "circle.fill")
+                    .foregroundColor(.blue)
+                    .font(.footnote)
+                    .padding()
+            }
         }
     }
 }
 
 struct PodcastRowView_Previews: PreviewProvider {
     static var previews: some View {
-        PodcastRow(podcast: PodcastStore.example.podcasts[0])
+        PodcastRow(podcast: PodcastStore.example.podcasts[0], hasNewEpisodes: true)
             .preferredColorScheme(.dark)
     }
 }

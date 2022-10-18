@@ -10,6 +10,7 @@ import SwiftUI
 struct AddView: View {
     
     @EnvironmentObject private var podcastStore: PodcastStore
+    @EnvironmentObject private var userDataStore: UserDataStore
     
     @State var searchTerm = ""
     
@@ -22,7 +23,7 @@ struct AddView: View {
             if searchResults.count > 0 {
                 List {
                     ForEach(searchResults) { podcast in
-                        PodcastRow(podcast: podcast)
+                        PodcastRow(podcast: podcast, hasNewEpisodes: false)
                             .background( NavigationLink("", destination: PodcastDetailsView(podcast: podcast)).opacity(0)
                             )
                     }
@@ -30,15 +31,17 @@ struct AddView: View {
                 .listStyle(.grouped)
             }
             else {
-                Text("Use the search above...")
-                Spacer()
+                Text("No results found...")
+                    .padding()
             }
+            Spacer()
         }
         .navigationTitle("Add Podcast")
         .navigationBarTitleDisplayMode(.inline)
     }
     
     var searchResults: [Podcast] {
+                
         if searchTerm.isEmpty {
             return []
         } else {
@@ -53,5 +56,6 @@ struct AddView_Previews: PreviewProvider {
         AddView()
             .preferredColorScheme(.dark)
             .environmentObject(PodcastStore.example)
+            .environmentObject(UserDataStore.example)
     }
 }

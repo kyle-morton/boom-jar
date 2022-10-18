@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
        
-    @Binding var userPodcasts: [UserPodcast]
+    @EnvironmentObject var userPodcastStore: UserDataStore
     @State var searchTerm = ""
     @State var showSettingsView = false
     @State var showDownloadsView = false
@@ -25,7 +25,7 @@ struct HomeView: View {
                 
                 List {
                     ForEach(searchResults) { userPodcast in
-                        PodcastRow(podcast: userPodcast.podcast)
+                        PodcastRow(podcast: userPodcast.podcast, hasNewEpisodes: true)
                             .background( NavigationLink("", destination: UserPodcastDetailsView(userPodcast: userPodcast)).opacity(0)
                             )
                     }
@@ -38,6 +38,7 @@ struct HomeView: View {
                         showSettingsView = true
                     } label: {
                         Image(systemName: "asterisk.circle")
+                            .foregroundColor(Color("LightBlue"))
                     }
                     Button {
                         showDownloadsView = true
@@ -83,9 +84,9 @@ struct HomeView: View {
     
     var searchResults: [UserPodcast] {
         if searchTerm.isEmpty {
-            return userPodcasts
+            return userPodcastStore.podcasts
         } else {
-            return userPodcasts.filter { $0.podcast.name.contains(searchTerm)
+            return userPodcastStore.podcasts.filter { $0.podcast.name.contains(searchTerm)
                 || $0.podcast.network.contains(searchTerm)}
         }
     }
@@ -94,7 +95,8 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(userPodcasts: .constant(UserPodcastStore.example.podcasts), saveAction: {})
+        HomeView(saveAction: {})
+            .environmentObject(UserDataStore.example)
             .preferredColorScheme(.dark)
     }
 }
