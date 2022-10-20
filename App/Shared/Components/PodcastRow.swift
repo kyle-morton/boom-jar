@@ -29,7 +29,7 @@ struct PodcastRow: View {
             
             if (hasNewEpisodes) {
                 Image(systemName: "circle.fill")
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color("LightBlue"))
                     .font(.footnote)
                     .padding()
             }

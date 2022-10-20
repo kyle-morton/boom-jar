@@ -38,7 +38,6 @@ struct HomeView: View {
                         showSettingsView = true
                     } label: {
                         Image(systemName: "asterisk.circle")
-                            .foregroundColor(Color("LightBlue"))
                     }
                     Button {
                         showDownloadsView = true
