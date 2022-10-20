@@ -15,9 +15,6 @@ struct AddView: View {
     @State var searchTerm = ""
     
     var body: some View {
-        
-        // TODO: build this out, need ability to add podcasts to user Podcast list
-        
         VStack(alignment: .leading) {
             SearchBar(searchTerm: $searchTerm)
             if searchResults.count > 0 {
@@ -36,6 +33,15 @@ struct AddView: View {
             }
             Spacer()
         }
+//        .toolbar {
+//            ToolbarItemGroup(placement: .navigationBarTrailing) {
+//                Button {
+//                    print("Edit button was tapped")
+//                } label: {
+//                    Image(systemName: "text.badge.plus")
+//                }
+//            }
+//        }
         .navigationTitle("Add Podcast")
         .navigationBarTitleDisplayMode(.inline)
     }

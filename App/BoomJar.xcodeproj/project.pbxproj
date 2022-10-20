@@ -173,6 +173,13 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
+		88570FD72900F7D10030A8A9 /* UserPodcast */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserPodcast;
+			sourceTree = "<group>";
+		};
 		8865369428F367DE0007A88A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +216,7 @@
 		886536AA28F505420007A88A /* Podcast */ = {
 			isa = PBXGroup;
 			children = (
+				88570FD72900F7D10030A8A9 /* UserPodcast */,
 				886536A428F3C1DE0007A88A /* PodcastDetailsView.swift */,
 				88570FD528FC88D20030A8A9 /* UserPodcastDetailsView.swift */,
 			);
