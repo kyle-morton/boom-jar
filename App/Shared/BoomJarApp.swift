@@ -12,6 +12,7 @@ struct BoomJarApp: App {
     
     @StateObject var userPodcastStore = UserDataStore()
     @StateObject var podcastStore = PodcastStore()
+    @StateObject var episodeStore = EpisodeStore()
     @State private var errorWrapper: ErrorWrapper?
     
     var body: some Scene {
@@ -42,6 +43,7 @@ struct BoomJarApp: App {
             }
             .environmentObject(podcastStore)
             .environmentObject(userPodcastStore)
+            .environmentObject(episodeStore)
         }
     }
 }

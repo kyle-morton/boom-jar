@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct PodcastRow: View {
-    
-    @EnvironmentObject var userPodcastStore: UserDataStore
-    @EnvironmentObject private var podcastStore: PodcastStore
-    
+   
     var podcast: Podcast = Podcast()
     var hasNewEpisodes: Bool
     
