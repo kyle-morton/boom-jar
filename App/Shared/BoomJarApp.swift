@@ -11,7 +11,6 @@ import SwiftUI
 struct BoomJarApp: App {
     
     @StateObject var userDataStore = UserDataStore()
-    @StateObject var episodeStore = EpisodeStore()
     @State private var errorWrapper: ErrorWrapper?
     
     var body: some Scene {
@@ -44,12 +43,10 @@ struct BoomJarApp: App {
             .sheet(item: $errorWrapper, onDismiss: {
                 userDataStore.podcasts = UserDataStore.example.podcasts
                 userDataStore.podcastEpisodes = UserDataStore.example.podcastEpisodes
-                userPodcastStore.podcasts = UserDataStore.example.podcasts;
             }) { wrapper in
                 ErrorView(errorWrapper: wrapper)
             }
-            .environmentObject(userPodcastStore)
-            .environmentObject(episodeStore)
+            .environmentObject(userDataStore)
         }
     }
 }

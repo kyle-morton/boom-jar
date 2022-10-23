@@ -15,10 +15,12 @@ class UserDataStore: ObservableObject {
     
     init() {
         self.podcasts = []
+        self.podcastEpisodes = []
     }
     
     init(podcasts: [UserPodcast], episodes: [UserPodcastEpisode]) {
         self.podcasts = podcasts
+        self.podcastEpisodes = episodes
     }
         
     private static func fileURL() throws -> URL {
@@ -26,7 +28,7 @@ class UserDataStore: ObservableObject {
                                     in: .userDomainMask,
                                     appropriateFor: nil,
                                     create: false)
-        .appendingPathComponent("boomjar.data");
+        .appendingPathComponent("boomjar-user.data");
     }
     
     public func subscribe(podcast: Podcast) -> UserPodcast {
@@ -134,8 +136,8 @@ class UserDataStore: ObservableObject {
         ],
         episodes: [
             UserPodcastEpisode(id: 1, userPodcastId: 1, episodeId: 15, startingSecond: 15),
-            UserPodcastEpisode(id: 2, userPodcastId: 1, episodeId: 81, startingSecond: 55)
-            UserPodcastEpisode(id: 3, userPodcastId: 1, episodeId: 90, startingSecond: 25)
+            UserPodcastEpisode(id: 2, userPodcastId: 1, episodeId: 81, startingSecond: 55),
+            UserPodcastEpisode(id: 3, userPodcastId: 1, episodeId: 90, startingSecond: 25),
             UserPodcastEpisode(id: 4, userPodcastId: 1, episodeId: 2, startingSecond: 1)
         ]
     )

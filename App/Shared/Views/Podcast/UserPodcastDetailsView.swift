@@ -18,11 +18,11 @@ struct UserPodcastDetailsView: View {
         var id: Self { self }
     }
     
-    var unplayedResults(searchTerm: String) -> [PodcastEpisode] {
-        
-        
-        
-    }
+//    var unplayedResults(searchTerm: String) -> [PodcastEpisode] {
+//
+//
+//
+//    }
         
     var body: some View {
         VStack {
@@ -53,14 +53,14 @@ struct UserPodcastDetailsView: View {
             }
             if selectedTab == DetailsViewTab.unplayed {
                 
-                List {
-                    ForEach(searchResults) { userPodcast in
-                        PodcastRow(podcast: userPodcast.podcast, hasNewEpisodes: true)
-                            .background( NavigationLink("", destination: UserPodcastDetailsView(userPodcast: userPodcast)).opacity(0)
-                            )
-                    }
-                }
-                .listStyle(.grouped)
+//                List {
+//                    ForEach(searchResults) { userPodcast in
+//                        PodcastRow(podcast: userPodcast.podcast, hasNewEpisodes: true)
+//                            .background( NavigationLink("", destination: UserPodcastDetailsView(userPodcast: userPodcast)).opacity(0)
+//                            )
+//                    }
+//                }
+//                .listStyle(.grouped)
                 Text("Unplayed")
             }
             else if selectedTab == DetailsViewTab.all {
