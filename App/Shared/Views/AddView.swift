@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AddView: View {
     
-    @EnvironmentObject private var podcastStore: PodcastStore
     @EnvironmentObject private var userDataStore: UserDataStore
     
     @State var searchTerm = ""
@@ -47,13 +46,7 @@ struct AddView: View {
     }
     
     var searchResults: [Podcast] {
-                
-        if searchTerm.isEmpty {
-            return []
-        } else {
-            return podcastStore.podcasts.filter { $0.name.contains(searchTerm)
-                || $0.network.contains(searchTerm)}
-        }
+        return PodcastService.search(searchTerm: searchTerm)
     }
 }
 
@@ -61,7 +54,6 @@ struct AddView_Previews: PreviewProvider {
     static var previews: some View {
         AddView()
             .preferredColorScheme(.dark)
-            .environmentObject(PodcastStore.example)
             .environmentObject(UserDataStore.example)
     }
 }

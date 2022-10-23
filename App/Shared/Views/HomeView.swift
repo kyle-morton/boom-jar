@@ -18,6 +18,15 @@ struct HomeView: View {
     @Environment(\.scenePhase) private var scenePhase;
     let saveAction: ()->Void;
     
+    var searchResults: [UserPodcast] {
+        if searchTerm.isEmpty {
+            return userPodcastStore.podcasts
+        } else {
+            return userPodcastStore.podcasts.filter { $0.podcast.name.contains(searchTerm)
+                || $0.podcast.network.contains(searchTerm)}
+        }
+    }
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -80,16 +89,6 @@ struct HomeView: View {
             }
         }
     }
-    
-    var searchResults: [UserPodcast] {
-        if searchTerm.isEmpty {
-            return userPodcastStore.podcasts
-        } else {
-            return userPodcastStore.podcasts.filter { $0.podcast.name.contains(searchTerm)
-                || $0.podcast.network.contains(searchTerm)}
-        }
-    }
-    
 }
 
 struct HomeView_Previews: PreviewProvider {

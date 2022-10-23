@@ -56,7 +56,7 @@ struct PodcastDetailsView: View {
 
 struct PodcastDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        PodcastDetailsView(podcast: PodcastStore.example.podcasts[0])
+        PodcastDetailsView(podcast: PodcastService.examplePodcasts[0])
             .environmentObject(UserDataStore.example)
             .preferredColorScheme(.dark)
     }

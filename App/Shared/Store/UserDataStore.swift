@@ -11,12 +11,13 @@ import SwiftUI
 class UserDataStore: ObservableObject {
     
     @Published var podcasts: [UserPodcast]
+    @Published var podcastEpisodes: [UserPodcastEpisode]
     
     init() {
         self.podcasts = []
     }
     
-    init(podcasts: [UserPodcast]) {
+    init(podcasts: [UserPodcast], episodes: [UserPodcastEpisode]) {
         self.podcasts = podcasts
     }
         
@@ -45,21 +46,21 @@ class UserDataStore: ObservableObject {
     }
     
     /// wrapper async function for the legacy DispatchQueue version
-    func load() async throws -> [UserPodcast] {
+    func load() async throws -> UserData {
         try await withCheckedThrowingContinuation { continuation in
             load { result in
                 switch result {
                 case .failure(let error):
                     continuation.resume(throwing: error);
-                case .success(let userPodcasts):
-                    continuation.resume(returning: userPodcasts);
+                case .success(let userData):
+                    continuation.resume(returning: userData);
                 }
                 
             }
         }
     }
     
-    func load(completion: @escaping (Result<[UserPodcast], Error>)->Void) {
+    func load(completion: @escaping (Result<UserData, Error>)->Void) {
         
         /// dispQueue is where you schedule tasks, these are FIFO, background is lowest priority
         DispatchQueue.global(qos: .background).async {
@@ -68,16 +69,15 @@ class UserDataStore: ObservableObject {
                 
                 guard let file = try? FileHandle(forReadingFrom: fileURL) else {
                     DispatchQueue.main.async {
-                        completion(.success([]));
+                        completion(.success(UserData()));
                     }
                     return;
                 }
                 
                 /// You perform the longer-running tasks of opening the file and decoding its contents on a background queue. When those tasks complete, you switch back to the main queue.
-                
-                let userPodcasts = try JSONDecoder().decode([UserPodcast].self, from: file.availableData);
+                let userData = try JSONDecoder().decode(UserData.self, from: file.availableData);
                 DispatchQueue.main.async {
-                    completion(.success(userPodcasts));
+                    completion(.success(userData));
                 }
             }
             catch {
@@ -90,9 +90,9 @@ class UserDataStore: ObservableObject {
     
     /// discardable result -> disables compiler warnings if client doesn't store FNs return value
     @discardableResult
-    func save(userPodcasts: [UserPodcast]) async throws -> Int {
+    func save() async throws -> Int {
         try await withCheckedThrowingContinuation { continuation in
-            save(userPodcasts:userPodcasts) { result in
+            save() { result in
                 switch result {
                 case .failure(let error):
                     continuation.resume(throwing: error);
@@ -104,14 +104,15 @@ class UserDataStore: ObservableObject {
         }
     }
     
-    func save(userPodcasts: [UserPodcast], completion: @escaping (Result<Int, Error>)->Void) {
+    func save(completion: @escaping (Result<Int, Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {
-                let data = try JSONEncoder().encode(userPodcasts);
+                let userData = UserData(podcasts: self.podcasts, episodes: self.podcastEpisodes)
+                let data = try JSONEncoder().encode(userData);
                 let outfile = try UserDataStore.fileURL();
                 try data.write(to: outfile);
                 DispatchQueue.main.async {
-                    completion(.success(userPodcasts.count));
+                    completion(.success(userData.podcasts.count));
                 }
             }
             catch {
@@ -126,10 +127,16 @@ class UserDataStore: ObservableObject {
        
     static var example = UserDataStore(
         podcasts: [
-            UserPodcast(id: 1, userId: 123, podcast: PodcastStore.examplePodcasts[0]),
-            UserPodcast(id: 2, userId: 123, podcast: PodcastStore.examplePodcasts[2]),
-            UserPodcast(id: 3, userId: 123, podcast: PodcastStore.examplePodcasts[7]),
-            UserPodcast(id: 4, userId: 123, podcast: PodcastStore.examplePodcasts[8])
+            UserPodcast(id: 1, userId: 123, podcast: PodcastService.examplePodcasts[0]),
+            UserPodcast(id: 2, userId: 123, podcast: PodcastService.examplePodcasts[2]),
+            UserPodcast(id: 3, userId: 123, podcast: PodcastService.examplePodcasts[7]),
+            UserPodcast(id: 4, userId: 123, podcast: PodcastService.examplePodcasts[8])
+        ],
+        episodes: [
+            UserPodcastEpisode(id: 1, userPodcastId: 1, episodeId: 15, startingSecond: 15),
+            UserPodcastEpisode(id: 2, userPodcastId: 1, episodeId: 81, startingSecond: 55)
+            UserPodcastEpisode(id: 3, userPodcastId: 1, episodeId: 90, startingSecond: 25)
+            UserPodcastEpisode(id: 4, userPodcastId: 1, episodeId: 2, startingSecond: 1)
         ]
     )
     

@@ -23,7 +23,7 @@ struct PodcastLogo: View {
 
 struct PodcastIcon_Previews: PreviewProvider {
     static var previews: some View {
-        PodcastLogo(podcast: PodcastStore.example.podcasts[0], isFullSize: false)
+        PodcastLogo(podcast: PodcastService.examplePodcasts[0], isFullSize: false)
             .preferredColorScheme(.dark)
     }
 }

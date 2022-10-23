@@ -17,6 +17,12 @@ struct UserPodcastDetailsView: View {
         case unplayed, all, settings
         var id: Self { self }
     }
+    
+    var unplayedResults(searchTerm: String) -> [PodcastEpisode] {
+        
+        
+        
+    }
         
     var body: some View {
         VStack {
@@ -46,6 +52,15 @@ struct UserPodcastDetailsView: View {
                 .pickerStyle(.segmented)
             }
             if selectedTab == DetailsViewTab.unplayed {
+                
+                List {
+                    ForEach(searchResults) { userPodcast in
+                        PodcastRow(podcast: userPodcast.podcast, hasNewEpisodes: true)
+                            .background( NavigationLink("", destination: UserPodcastDetailsView(userPodcast: userPodcast)).opacity(0)
+                            )
+                    }
+                }
+                .listStyle(.grouped)
                 Text("Unplayed")
             }
             else if selectedTab == DetailsViewTab.all {
@@ -58,6 +73,11 @@ struct UserPodcastDetailsView: View {
 
             Spacer()
         }
+        .onAppear {
+            
+        }
+        
+        
     }
 }
 

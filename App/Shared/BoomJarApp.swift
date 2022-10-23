@@ -10,8 +10,7 @@ import SwiftUI
 @main
 struct BoomJarApp: App {
     
-    @StateObject var userPodcastStore = UserDataStore()
-    @StateObject var podcastStore = PodcastStore()
+    @StateObject var userDataStore = UserDataStore()
     @StateObject var episodeStore = EpisodeStore()
     @State private var errorWrapper: ErrorWrapper?
     
@@ -21,7 +20,7 @@ struct BoomJarApp: App {
                 // Save Action
                 Task {
                     do {
-                        try await userPodcastStore.save(userPodcasts: userPodcastStore.podcasts);
+                        try await userDataStore.save();
                     }
                     catch {
                         errorWrapper = ErrorWrapper(error: error, guidance: "Try again later.");
@@ -30,18 +29,25 @@ struct BoomJarApp: App {
             }
             .task {
                 do {
-                    userPodcastStore.podcasts = try await userPodcastStore.load();
+                    let userData = try await userDataStore.load()
+                    userDataStore.podcasts = userData.podcasts
+                    userDataStore.podcastEpisodes = userData.episodes
+                    
+//                    NotificationCenter.default.addObserver(forName: UIApplication.willTerminateNotification, object: nil, queue: .main) { _ in
+//                        await userPodcastStore.save(userPodcasts: userPodcastStore.podcasts);
+//                    }
                 }
                 catch {
                     errorWrapper = ErrorWrapper(error: error, guidance: "BoomJar will load sample data and continue.");
                 }
             }
             .sheet(item: $errorWrapper, onDismiss: {
+                userDataStore.podcasts = UserDataStore.example.podcasts
+                userDataStore.podcastEpisodes = UserDataStore.example.podcastEpisodes
                 userPodcastStore.podcasts = UserDataStore.example.podcasts;
             }) { wrapper in
                 ErrorView(errorWrapper: wrapper)
             }
-            .environmentObject(podcastStore)
             .environmentObject(userPodcastStore)
             .environmentObject(episodeStore)
         }

@@ -1,24 +1,22 @@
 //
-//  PodcastStore.swift
+//  EpisodeService.swift
 //  BoomJar (iOS)
 //
-//  Created by Kyle Morton on 10/9/22.
+//  Created by Kyle Morton on 10/23/22.
 //
 
 import Foundation
-import SwiftUI
 
-class PodcastStore: ObservableObject {
+struct PodcastService {
     
-    // TODO: instead of having a published list, use a static list method to pull these (will be via a search anyway)
-    @Published var podcasts: [Podcast]
-    
-    init() {
-        self.podcasts = PodcastStore.examplePodcasts
-    }
-    
-    init(podcasts: [Podcast]) {
-        self.podcasts = podcasts
+    static func search(searchTerm: String) -> [Podcast] {
+        
+        if searchTerm.isEmpty {
+            return []
+        } else {
+            return examplePodcasts.filter { $0.name.contains(searchTerm)
+                || $0.network.contains(searchTerm)}
+        }
     }
     
     #if DEBUG
@@ -36,11 +34,7 @@ class PodcastStore: ObservableObject {
         Podcast(id: 10, name: "Podcast J", network: "NPR", logoUrl: "https://picsum.photos/60/60", fullLogoUrl: "https://picsum.photos/300/300")
     ]
     
-    
-    static var example = PodcastStore(
-        podcasts: examplePodcasts
-    )
-    
     #endif
+    
     
 }
