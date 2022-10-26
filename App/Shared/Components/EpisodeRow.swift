@@ -29,7 +29,7 @@ struct EpisodeRow: View {
 
 struct EpisodeRow_Previews: PreviewProvider {
     static var previews: some View {
-        EpisodeRow(episode: EpisodeStore.exampleEpisodes[0])
+        EpisodeRow(episode: EpisodeService.exampleEpisodes[0])
             .preferredColorScheme(.dark)
     }
 }

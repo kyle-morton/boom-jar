@@ -18,7 +18,6 @@
 		88570FD428FC7E950030A8A9 /* PodcastLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88570FD328FC7E950030A8A9 /* PodcastLogo.swift */; };
 		88570FD628FC88D20030A8A9 /* UserPodcastDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88570FD528FC88D20030A8A9 /* UserPodcastDetailsView.swift */; };
 		88570FD92902316D0030A8A9 /* EpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88570FD82902316D0030A8A9 /* EpisodeRow.swift */; };
-		88570FDB290231B00030A8A9 /* EpisodeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88570FDA290231B00030A8A9 /* EpisodeStore.swift */; };
 		88570FDE29023C0C0030A8A9 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88570FDD29023C0C0030A8A9 /* StringExtensions.swift */; };
 		88570FE029023C1E0030A8A9 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88570FDF29023C1E0030A8A9 /* DateExtensions.swift */; };
 		88570FE3290598650030A8A9 /* EpisodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88570FE2290598650030A8A9 /* EpisodeService.swift */; };
@@ -72,7 +71,6 @@
 		88570FD328FC7E950030A8A9 /* PodcastLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastLogo.swift; sourceTree = "<group>"; };
 		88570FD528FC88D20030A8A9 /* UserPodcastDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPodcastDetailsView.swift; sourceTree = "<group>"; };
 		88570FD82902316D0030A8A9 /* EpisodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRow.swift; sourceTree = "<group>"; };
-		88570FDA290231B00030A8A9 /* EpisodeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeStore.swift; sourceTree = "<group>"; };
 		88570FDD29023C0C0030A8A9 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		88570FDF29023C1E0030A8A9 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		88570FE2290598650030A8A9 /* EpisodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeService.swift; sourceTree = "<group>"; };
@@ -239,7 +237,6 @@
 			isa = PBXGroup;
 			children = (
 				886536BC28FBA24D0007A88A /* UserDataStore.swift */,
-				88570FDA290231B00030A8A9 /* EpisodeStore.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -430,7 +427,6 @@
 				886536BD28FBA24D0007A88A /* UserDataStore.swift in Sources */,
 				886536B628F8FE770007A88A /* SearchBar.swift in Sources */,
 				886536A928F505020007A88A /* HomeView.swift in Sources */,
-				88570FDB290231B00030A8A9 /* EpisodeStore.swift in Sources */,
 				88570FE3290598650030A8A9 /* EpisodeService.swift in Sources */,
 				884D375528F36696005E6E83 /* BoomJarApp.swift in Sources */,
 				886536BB28FBA1990007A88A /* ErrorWrapper.swift in Sources */,

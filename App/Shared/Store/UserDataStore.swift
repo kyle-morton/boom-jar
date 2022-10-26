@@ -47,6 +47,14 @@ class UserDataStore: ObservableObject {
         return podcasts.contains{ $0.podcastId == podcastId}
     }
     
+    public func hasPlayedEpisode(episodeId: Int) -> Bool {
+        return podcastEpisodes.contains { $0.episodeId == episodeId }
+    }
+    
+    
+    
+    //     LOAD/UNLOAD
+    
     /// wrapper async function for the legacy DispatchQueue version
     func load() async throws -> UserData {
         try await withCheckedThrowingContinuation { continuation in

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserPodcastDetailsView: View {
     
-    @EnvironmentObject private var userPodcastStore: UserDataStore
+    @EnvironmentObject private var userDataStore: UserDataStore
     var userPodcast: UserPodcast = UserPodcast()
     @State private var selectedTab: DetailsViewTab = .unplayed
     
@@ -18,12 +18,14 @@ struct UserPodcastDetailsView: View {
         var id: Self { self }
     }
     
-//    var unplayedResults(searchTerm: String) -> [PodcastEpisode] {
-//
-//
-//
-//    }
+    var unplayedResults: [PodcastEpisode] {
+        let result = EpisodeService.search(podcastId: self.userPodcast.podcastId, searchTerm: "", onlyUnplayed: true, userDataStore: self.userDataStore)
         
+        print("results: \(result)")
+        
+        return result
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -53,15 +55,17 @@ struct UserPodcastDetailsView: View {
             }
             if selectedTab == DetailsViewTab.unplayed {
                 
-//                List {
-//                    ForEach(searchResults) { userPodcast in
+                List {
+                    ForEach(unplayedResults) { episode in
+                        Text("\(episode.title)")
+//                        Text("Episode: " + episode.id + " " + episode.title)
 //                        PodcastRow(podcast: userPodcast.podcast, hasNewEpisodes: true)
 //                            .background( NavigationLink("", destination: UserPodcastDetailsView(userPodcast: userPodcast)).opacity(0)
 //                            )
-//                    }
-//                }
-//                .listStyle(.grouped)
-                Text("Unplayed")
+                    }
+                }
+                .listStyle(.grouped)
+//                Text("Unplayed")
             }
             else if selectedTab == DetailsViewTab.all {
                 Text("All")
@@ -74,7 +78,9 @@ struct UserPodcastDetailsView: View {
             Spacer()
         }
         .onAppear {
-            
+//            let unplayed = EpisodeService.search(podcastId: self.userPodcast.podcastId, searchTerm: "", onlyUnplayed: true, userDataStore: self.userDataStore)
+//            print("Unplayed Results: ")
+//            self.unplayedResults = unplayed
         }
         
         
