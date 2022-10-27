@@ -16,7 +16,7 @@ struct EpisodeRow: View {
             VStack (alignment:.leading){
                 Text(episode.title)
                 Text(episode.postingDate.formatted())
-                 .font(.subheadline)
+                    .font(.caption)
             }
             Spacer()
             Image(systemName: "chevron.down.circle")
@@ -24,7 +24,7 @@ struct EpisodeRow: View {
                 .font(.footnote)
                 .padding()
         }
-        .padding()
+//        .padding()
     }
 
 struct EpisodeRow_Previews: PreviewProvider {

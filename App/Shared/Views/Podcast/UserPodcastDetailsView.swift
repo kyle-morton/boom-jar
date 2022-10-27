@@ -10,24 +10,27 @@ import SwiftUI
 struct UserPodcastDetailsView: View {
     
     @EnvironmentObject private var userDataStore: UserDataStore
-    var userPodcast: UserPodcast = UserPodcast()
     @State private var selectedTab: DetailsViewTab = .unplayed
+    @State var episodeSearchTerm = ""
+    var userPodcast: UserPodcast = UserPodcast()
     
     enum DetailsViewTab: String, CaseIterable, Identifiable {
         case unplayed, all, settings
         var id: Self { self }
     }
     
+    var allResults: [PodcastEpisode] {
+        return EpisodeService.search(podcastId: self.userPodcast.podcastId, searchTerm: self.episodeSearchTerm, onlyUnplayed: false, userDataStore: self.userDataStore);
+    }
+    
     var unplayedResults: [PodcastEpisode] {
-        let result = EpisodeService.search(podcastId: self.userPodcast.podcastId, searchTerm: "", onlyUnplayed: true, userDataStore: self.userDataStore)
-        
-        print("results: \(result)")
-        
+        let result = EpisodeService.search(podcastId: self.userPodcast.podcastId, searchTerm: self.episodeSearchTerm, onlyUnplayed: true, userDataStore: self.userDataStore)
         return result
     }
     
     var body: some View {
         VStack {
+            SearchBar(searchTerm: $episodeSearchTerm)
             HStack {
                 PodcastLogo(podcast: userPodcast.podcast, isFullSize: false)
                 VStack {
@@ -54,10 +57,12 @@ struct UserPodcastDetailsView: View {
                 .pickerStyle(.segmented)
             }
             if selectedTab == DetailsViewTab.unplayed {
-                
                 List {
                     ForEach(unplayedResults) { episode in
-                        Text("\(episode.title)")
+                        EpisodeRow(episode: episode)
+                            .background(
+                                NavigationLink("", destination: NowPlayingView(episode: episode)).opacity(0)
+                            )
 //                        Text("Episode: " + episode.id + " " + episode.title)
 //                        PodcastRow(podcast: userPodcast.podcast, hasNewEpisodes: true)
 //                            .background( NavigationLink("", destination: UserPodcastDetailsView(userPodcast: userPodcast)).opacity(0)
@@ -65,10 +70,21 @@ struct UserPodcastDetailsView: View {
                     }
                 }
                 .listStyle(.grouped)
-//                Text("Unplayed")
             }
             else if selectedTab == DetailsViewTab.all {
-                Text("All")
+                List {
+                    ForEach(allResults) { episode in
+                        EpisodeRow(episode: episode)
+                            .background(
+                                NavigationLink("", destination: NowPlayingView(episode: episode)).opacity(0)
+                            )
+//                        Text("Episode: " + episode.id + " " + episode.title)
+//                        PodcastRow(podcast: userPodcast.podcast, hasNewEpisodes: true)
+//                            .background( NavigationLink("", destination: UserPodcastDetailsView(userPodcast: userPodcast)).opacity(0)
+//                            )
+                    }
+                }
+                .listStyle(.grouped)
             }
             else {
                 Text("Settings")
@@ -82,6 +98,8 @@ struct UserPodcastDetailsView: View {
 //            print("Unplayed Results: ")
 //            self.unplayedResults = unplayed
         }
+        .navigationTitle(userPodcast.podcast.name)
+        .navigationBarTitleDisplayMode(.inline)
         
         
     }

@@ -18,6 +18,7 @@ struct PodcastLogo: View {
                     width: isFullSize ? 400 : 60,
                     height: isFullSize ? 400 : 60
                 )
+                .cornerRadius(8)
     }
 }
 

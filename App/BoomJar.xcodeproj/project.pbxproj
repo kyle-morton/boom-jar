@@ -24,6 +24,7 @@
 		88570FE52905986F0030A8A9 /* PodcastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88570FE42905986F0030A8A9 /* PodcastService.swift */; };
 		88570FE82905BA880030A8A9 /* UserPodcastEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88570FE72905BA880030A8A9 /* UserPodcastEpisode.swift */; };
 		88570FEA2905BC1A0030A8A9 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88570FE92905BC1A0030A8A9 /* UserData.swift */; };
+		88570FEC290A26840030A8A9 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88570FEB290A26840030A8A9 /* NowPlayingView.swift */; };
 		8865369828F36D7C0007A88A /* PodcastRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865369728F36D7C0007A88A /* PodcastRow.swift */; };
 		8865369B28F3B99F0007A88A /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865369A28F3B99F0007A88A /* Podcast.swift */; };
 		8865369D28F3BAA70007A88A /* PodcastEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865369C28F3BAA70007A88A /* PodcastEpisode.swift */; };
@@ -78,6 +79,7 @@
 		88570FE62905B4F10030A8A9 /* Schema-Rundown.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Schema-Rundown.md"; sourceTree = "<group>"; };
 		88570FE72905BA880030A8A9 /* UserPodcastEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPodcastEpisode.swift; sourceTree = "<group>"; };
 		88570FE92905BC1A0030A8A9 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		88570FEB290A26840030A8A9 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		8865369728F36D7C0007A88A /* PodcastRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastRow.swift; sourceTree = "<group>"; };
 		8865369A28F3B99F0007A88A /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		8865369C28F3BAA70007A88A /* PodcastEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastEpisode.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				886536AD28F507F20007A88A /* DownloadsView.swift */,
 				886536B328F8F5630007A88A /* AddView.swift */,
 				886536B828FBA18B0007A88A /* ErrorView.swift */,
+				88570FEB290A26840030A8A9 /* NowPlayingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				886536AE28F507F20007A88A /* DownloadsView.swift in Sources */,
 				886536A528F3C1DE0007A88A /* PodcastDetailsView.swift in Sources */,
 				88570FEA2905BC1A0030A8A9 /* UserData.swift in Sources */,
+				88570FEC290A26840030A8A9 /* NowPlayingView.swift in Sources */,
 				886536B928FBA18B0007A88A /* ErrorView.swift in Sources */,
 				88570FE52905986F0030A8A9 /* PodcastService.swift in Sources */,
 				886536B428F8F5630007A88A /* AddView.swift in Sources */,
